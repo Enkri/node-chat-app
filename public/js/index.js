@@ -54,6 +54,9 @@ locationButton.on('click', function () {
     });
   }, function () {
     locationButton.removeAttr('disabled').text('Send location');
-    alert('Unable to fetch location.');
+    // alert('Unable to fetch location.');
+    $('#alert').html('<div class="alert alert-warning alert-dismissible" role="alert">'
+    + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+    + '<span aria-hidden="true">&times;</span></button> Unable to fetch location, please allow location access. </div>');
   });
 });
