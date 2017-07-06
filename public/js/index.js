@@ -25,12 +25,12 @@ function scrollToButtom () {
     badge.hide();
   } else {
     messageCount++;
-    badge.html('<button class="btn btn-primary d-inline-flex justify-content-center" type="button">' +
-    'New Messages <span class="badge">' + messageCount +'</span></button>');
+    badge.html('<button class="btn btn-primary" type="button">' +
+    'Unread Messages <span class="badge">' + messageCount +'</span></button>');
   };
 };
 
-jQuery('#badge-template').attr('align', 'center');
+
 
 socket.on('connect', function() {
   console.log('Connected to server');
