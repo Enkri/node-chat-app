@@ -1,23 +1,36 @@
 var socket = io();
-
+var messageCount = 0;
 function scrollToButtom () {
   // Selectors
   var messages = jQuery('#messages');
   var newMessage = messages.children('li:last-child');
+  var badge = jQuery('#badge-template');
   // Heights
   var clientHeight = messages.prop('clientHeight');
   var scrollTop = messages.prop('scrollTop');
   var scrollHeight = messages.prop('scrollHeight');
-  var newMessageHeight = newMessage.innerHeight();
-  var lastMessageHeight = newMessage.prev().innerHeight();
+  var newMessageHeight = newMessage.innerHeight() || 0;
+  var lastMessageHeight = newMessage.prev().innerHeight() || 0;
 
-  if (clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight) {
-    //  messages.scrollTop(scrollHeight);
-    messages.animate({scrollTop:scrollHeight}, 1000);
-    return false;
+  if (scrollTop  + clientHeight + lastMessageHeight <= scrollHeight) {
+    badge.show();
   }
+  if (clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight) {
+    badge.click(function() {
+      messages.scrollTop(scrollHeight);
+      messageCount = 0;
+      $(this).hide();
+    });
+    messages.scrollTop(scrollHeight);
+    badge.hide();
+  } else {
+    messageCount++;
+    badge.html('<button class="btn btn-primary d-inline-flex justify-content-center" type="button">' +
+    'New Messages <span class="badge">' + messageCount +'</span></button>');
+  };
 };
 
+jQuery('#badge-template').attr('align', 'center');
 
 socket.on('connect', function() {
   console.log('Connected to server');
