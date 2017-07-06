@@ -30,7 +30,7 @@ function scrollToButtom () {
   };
 };
 
-
+jQuery('#badge-template').attr('align', 'center');
 
 socket.on('connect', function() {
   console.log('Connected to server');
