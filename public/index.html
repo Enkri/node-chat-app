@@ -14,11 +14,20 @@
         </div>
         <div class="form-field">
           <label> Display name </label>
-          <input type="text" name="name" autofocus/>
+          <input type="text" name="name" autofocus autocomplete="off"/>
         </div>
-        <div class="form-field">
+
+        <div class="form-field" >
+          <select class="form-control"  name="room">
+            <option selected="selected" value="0">choose a room...</option>
+            <option value="One" name="room">One</option>
+            <option value='create' id="room-select">Create a new room</option>
+        </select>
+        </div>
+
+        <div class="form-field" id="room-input">
           <label>Room name</label>
-          <input type="text" name="room"/>
+          <input id="room-input-tag" type="text" name="room" autocomplete="off"/>
         </div>
         <div class="form-field">
           <button class="btn btn-primary">Join</button>
@@ -27,11 +36,12 @@
     </div>
 
     <script src="/js/libs/jquery-3.2.1.min.js"></script>
+    <script src="/js/index.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <!-- <script src="/js/chat.js"></script> -->
   </body>
 
 </html>
