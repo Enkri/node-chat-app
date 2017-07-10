@@ -1,10 +1,3 @@
-[{
-  id: '/#sfvsfdvpdv2323',
-  name: "Chen",
-  room: "The Ofiice Fans"
-}]
-
-
 class Users {
   constructor() {
     this.users = [];

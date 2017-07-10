@@ -31,6 +31,14 @@ function scrollToButtom () {
   };
 };
 
+$('#messages').scroll(function() {
+  var messages = jQuery('#messages');
+  if (messages.prop('scrollTop') + messages.prop('clientHeight') == messages.prop('scrollHeight')) {
+    jQuery('#badge-template').hide();
+    messageCount = 0;
+  }
+});
+
 jQuery('#badge-template').attr('align', 'center');
 
 socket.on('connect', function() {
@@ -56,6 +64,7 @@ socket.on('updateUserList', function(users) {
     ol.append(jQuery('<li></li>').text(user));
   });
   jQuery('#users').html(ol);
+  ol.after("<div class='text-center'><a href='/' class='btn btn-warning' id='leave'> Leave Room</a></div>");
 });
 
 socket.on('newMessage', function(message) {
@@ -95,7 +104,6 @@ socket.on('newLocationMessage', function (message) {
 
 jQuery('#message-form').on('submit', function(e) {
   e.preventDefault();
-
   var messageTextbox = jQuery('[name=message]');
   socket.emit('createMessage', {
     text: messageTextbox.val()
@@ -125,4 +133,12 @@ locationButton.on('click', function () {
     + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
     + '<span aria-hidden="true">&times;</span></button> Unable to fetch location, please allow location access. </div>');
   });
+});
+
+
+
+/* off-canvas sidebar toggle */
+$('[data-toggle=offcanvas]').click(function() {
+    $('.row-offcanvas').toggleClass('active');
+    $('.collapse').toggleClass('in').toggleClass('hidden-xs').toggleClass('visible-xs');
 });

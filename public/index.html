@@ -17,17 +17,13 @@
           <input type="text" name="name" autofocus autocomplete="off"/>
         </div>
 
-        <div class="form-field" >
-          <select class="form-control"  name="room">
-            <option selected="selected" value="0">choose a room...</option>
-            <option value="One" name="room">One</option>
-            <option value='create' id="room-select">Create a new room</option>
-        </select>
+        <div class="form-field">
+          <select class="form-control"  name="room" id="selection"></select>
         </div>
 
         <div class="form-field" id="room-input">
           <label>Room name</label>
-          <input id="room-input-tag" type="text" name="room" autocomplete="off"/>
+          <input id="room-input-tag" type="text" name="room" autocomplete="off" autofocus/>
         </div>
         <div class="form-field">
           <button class="btn btn-primary">Join</button>
@@ -35,6 +31,7 @@
       </form>
     </div>
 
+    <script src="socket.io/socket.io.js"></script>
     <script src="/js/libs/jquery-3.2.1.min.js"></script>
     <script src="/js/index.js"></script>
     <!-- Latest compiled and minified JavaScript -->
